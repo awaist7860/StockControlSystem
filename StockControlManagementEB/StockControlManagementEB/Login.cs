@@ -24,7 +24,7 @@ namespace StockControlManagementEB
             
 
 
-            SqlConnection con = new SqlConnection("Data Source=WIN-93624CQO2M5\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;User ID=SA;Password=Hamzah8378 ");
+            SqlConnection con = new SqlConnection("Data Source=86.19.74.48\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=Hamzah8378");
             SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Login WHERE Username = '"+txtUserName.Text+"' AND Password = '"+txtPassword.Text+"'", con);
 
             DataTable dt = new DataTable();
@@ -42,6 +42,11 @@ namespace StockControlManagementEB
                 MessageBox.Show("You entered a wrong username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
