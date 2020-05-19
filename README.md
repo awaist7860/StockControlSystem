@@ -8,3 +8,8 @@ Next Tasks:
 Login page added, but needs some more work on the security.
 Documentation will need to be created soon.
 End
+
+Software Used:
+Visual Studio 2019
+Microsft SQL Server 2019
+Microsft SQL Server Management Studio 2018
