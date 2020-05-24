@@ -82,6 +82,17 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.txtInput = new System.Windows.Forms.TextBox();
+            this.btnCreateTable = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFieldsAmount = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btnViewAllTables = new System.Windows.Forms.Button();
+            this.btnDeleteTable = new System.Windows.Forms.Button();
+            this.txtTableDeleteName = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -99,7 +110,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(632, 24);
+            this.menuStrip.Size = new System.Drawing.Size(981, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -440,7 +451,7 @@
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(632, 25);
+            this.toolStrip.Size = new System.Drawing.Size(981, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -514,9 +525,9 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 431);
+            this.statusStrip.Location = new System.Drawing.Point(0, 704);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(632, 22);
+            this.statusStrip.Size = new System.Drawing.Size(981, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -526,11 +537,123 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // txtInput
+            // 
+            this.txtInput.Location = new System.Drawing.Point(51, 119);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(100, 20);
+            this.txtInput.TabIndex = 4;
+            // 
+            // btnCreateTable
+            // 
+            this.btnCreateTable.Location = new System.Drawing.Point(51, 145);
+            this.btnCreateTable.Name = "btnCreateTable";
+            this.btnCreateTable.Size = new System.Drawing.Size(75, 44);
+            this.btnCreateTable.TabIndex = 5;
+            this.btnCreateTable.Text = "Create Table";
+            this.btnCreateTable.UseVisualStyleBackColor = true;
+            this.btnCreateTable.Click += new System.EventHandler(this.btnCreateTable_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(51, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Table name";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtFieldsAmount
+            // 
+            this.txtFieldsAmount.Location = new System.Drawing.Point(190, 119);
+            this.txtFieldsAmount.Name = "txtFieldsAmount";
+            this.txtFieldsAmount.Size = new System.Drawing.Size(100, 20);
+            this.txtFieldsAmount.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(190, 100);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "FieldsAmount";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(54, 246);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.TabIndex = 11;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // btnViewAllTables
+            // 
+            this.btnViewAllTables.Location = new System.Drawing.Point(54, 387);
+            this.btnViewAllTables.Name = "btnViewAllTables";
+            this.btnViewAllTables.Size = new System.Drawing.Size(120, 23);
+            this.btnViewAllTables.TabIndex = 12;
+            this.btnViewAllTables.Text = "View All Tables";
+            this.btnViewAllTables.UseVisualStyleBackColor = true;
+            this.btnViewAllTables.Click += new System.EventHandler(this.btnViewAllTables_Click);
+            // 
+            // btnDeleteTable
+            // 
+            this.btnDeleteTable.Location = new System.Drawing.Point(206, 478);
+            this.btnDeleteTable.Name = "btnDeleteTable";
+            this.btnDeleteTable.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteTable.TabIndex = 13;
+            this.btnDeleteTable.Text = "Delete table";
+            this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click);
+            // 
+            // txtTableDeleteName
+            // 
+            this.txtTableDeleteName.Location = new System.Drawing.Point(51, 478);
+            this.txtTableDeleteName.Name = "txtTableDeleteName";
+            this.txtTableDeleteName.Size = new System.Drawing.Size(123, 20);
+            this.txtTableDeleteName.TabIndex = 14;
+            this.txtTableDeleteName.TextChanged += new System.EventHandler(this.txtTableDeleteName_TextChanged);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(206, 387);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 15;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(915, 62);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(44, 23);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.ClientSize = new System.Drawing.Size(981, 726);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.txtTableDeleteName);
+            this.Controls.Add(this.btnDeleteTable);
+            this.Controls.Add(this.btnViewAllTables);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtFieldsAmount);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCreateTable);
+            this.Controls.Add(this.txtInput);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -604,6 +727,17 @@
         private System.Windows.Forms.ToolStripButton printPreviewToolStripButton;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.TextBox txtInput;
+        private System.Windows.Forms.Button btnCreateTable;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFieldsAmount;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnViewAllTables;
+        private System.Windows.Forms.Button btnDeleteTable;
+        private System.Windows.Forms.TextBox txtTableDeleteName;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnClose;
     }
 }
 

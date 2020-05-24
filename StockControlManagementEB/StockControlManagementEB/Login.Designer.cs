@@ -65,12 +65,13 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(112, 69);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 20);
             this.txtPassword.TabIndex = 3;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(46, 114);
+            this.btnCancel.Location = new System.Drawing.Point(137, 114);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -80,7 +81,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(137, 114);
+            this.btnLogin.Location = new System.Drawing.Point(46, 114);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 5;
@@ -101,6 +102,7 @@
             this.Controls.Add(this.lblUserName);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
