@@ -13,3 +13,12 @@ Software Used:
 Visual Studio 2019
 Microsft SQL Server 2019
 Microsft SQL Server Management Studio 2018
+
+Completed tasks:
+
+Login works.
+Multiple users work.
+Differnet types of users work such as admins and normal users.
+Tables are able to be created by the user.
+All tables in the databse are able to be seen in a listbox.
+User is able to delete a table by cicking on the name.
