@@ -93,9 +93,13 @@
             this.txtTableDeleteName = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnViewData = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtViewTableName = new System.Windows.Forms.TextBox();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -630,6 +634,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Location = new System.Drawing.Point(915, 62);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(44, 23);
@@ -638,11 +643,42 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnViewData
+            // 
+            this.btnViewData.Location = new System.Drawing.Point(338, 318);
+            this.btnViewData.Name = "btnViewData";
+            this.btnViewData.Size = new System.Drawing.Size(75, 23);
+            this.btnViewData.TabIndex = 18;
+            this.btnViewData.Text = "View Table";
+            this.btnViewData.UseVisualStyleBackColor = true;
+            this.btnViewData.Click += new System.EventHandler(this.btnViewData_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(338, 100);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(621, 150);
+            this.dataGridView1.TabIndex = 19;
+            // 
+            // txtViewTableName
+            // 
+            this.txtViewTableName.Location = new System.Drawing.Point(338, 282);
+            this.txtViewTableName.Name = "txtViewTableName";
+            this.txtViewTableName.Size = new System.Drawing.Size(100, 20);
+            this.txtViewTableName.TabIndex = 20;
+            this.txtViewTableName.TextChanged += new System.EventHandler(this.txtViewTableName_TextChanged);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 726);
+            this.Controls.Add(this.txtViewTableName);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btnViewData);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtTableDeleteName);
@@ -668,6 +704,7 @@
             this.toolStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -738,6 +775,9 @@
         private System.Windows.Forms.TextBox txtTableDeleteName;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnViewData;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtViewTableName;
     }
 }
 

@@ -134,7 +134,7 @@ namespace StockControlManagementEB
             try
             {
                 //User can create their own table with their own table name
-                SqlCommand sda = new SqlCommand("CREATE TABLE " + tableName + " (myId INTEGER PRIMARY KEY, myName CHAR(50))", con); //This works
+                SqlCommand sda = new SqlCommand("CREATE TABLE " + tableName + " (ProductID INTEGER PRIMARY KEY, ProductName varchar(50), ProductSize varchar(50), ProductColour varchar(50), ProductStyle varchar(50))", con); //This works
                 con.Open();
                 //sda.ExecuteNonQuery();
                 sda.ExecuteNonQuery();
@@ -179,6 +179,8 @@ namespace StockControlManagementEB
                 //MessageBox.Show(table);
                 //con.Close();
 
+                //Boolean flag = true;
+
                 con.Open();
 
                 SqlCommand sqlCmd = new SqlCommand();
@@ -192,8 +194,20 @@ namespace StockControlManagementEB
                 DataTable dtRecord = new DataTable();
                 sqlDataAdap.Fill(dtRecord);
                 listBox1.Items.Clear();
+                //if (flag == true)
+                //{
+                    //listBox1.DataSource = dtRecord;
+                    //flag = false;
+                //}
+                //else if(flag == false)
+                //{
+                    //listBox1.DataSource = null;
+                    //listBox1.Items.Clear();
+                    //flag = true;
+                //}
                 listBox1.DataSource = dtRecord;
                 listBox1.DisplayMember = "TABLE_NAME";
+                //listBox1.DataSource = null;
                 con.Close();
 
             }
@@ -266,7 +280,35 @@ namespace StockControlManagementEB
                 //selectedName = listBox1.SelectedItems.Cast<string>().ToString();
                 //label1.Text = selectedName;
                 txtTableDeleteName.Text = selectedName; //label1.;
+                txtViewTableName.Text = selectedName;
             }
+        }
+
+        private void btnViewData_Click(object sender, EventArgs e)
+        {
+
+            string tableName2 = txtViewTableName.Text;
+
+            try
+            {
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM " + tableName2, con); //This works
+                con.Open();
+                
+                //Method 1
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception f) 
+            {
+                MessageBox.Show("exception occured while creating table:" + f.Message + "\t" + f.GetType());
+                con.Close();
+            }
+        }
+
+        private void txtViewTableName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
