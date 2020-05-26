@@ -96,6 +96,7 @@
             this.btnViewData = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtViewTableName = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -671,11 +672,22 @@
             this.txtViewTableName.TabIndex = 20;
             this.txtViewTableName.TextChanged += new System.EventHandler(this.txtViewTableName_TextChanged);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(485, 318);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 22;
+            this.btnEdit.Text = "Edit Table";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 726);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtViewTableName);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnViewData);
@@ -778,6 +790,7 @@
         private System.Windows.Forms.Button btnViewData;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtViewTableName;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 

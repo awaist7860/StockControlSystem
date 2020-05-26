@@ -60,6 +60,7 @@
             this.Controls.Add(this.btnTestForm);
             this.Name = "AdminMenu";
             this.Text = "AdminMenu";
+            this.Load += new System.EventHandler(this.AdminMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

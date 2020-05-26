@@ -23,5 +23,10 @@ namespace StockControlManagementEB
             HomePage homepage = new HomePage();
             homepage.Show();
         }
+
+        private void AdminMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

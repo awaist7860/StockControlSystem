@@ -60,6 +60,7 @@
             this.Controls.Add(this.btnTestForm);
             this.Name = "NormalUserMenu";
             this.Text = "NormalUserMenu";
+            this.Load += new System.EventHandler(this.NormalUserMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
