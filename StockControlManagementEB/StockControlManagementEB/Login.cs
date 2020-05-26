@@ -15,15 +15,15 @@ namespace StockControlManagementEB
     public partial class Login : Form
     {
         //Redo this when making the database on the public network
-        //SqlConnection con = new SqlConnection("Data Source=86.19.74.48\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=Hamzah8378");         //public addapter
-        SqlConnection con = new SqlConnection("Data Source=192.168.0.104\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=Hamzah8378");
+        //SqlConnection con = new SqlConnection("Data Source=ip\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=");         //public addapter
+        SqlConnection con = new SqlConnection("Data Source=ip\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=");
 
         public Login()
         {
             InitializeComponent();
         }
 
-        //private string access = "Hamzah8378";
+        //private string access = "";
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
