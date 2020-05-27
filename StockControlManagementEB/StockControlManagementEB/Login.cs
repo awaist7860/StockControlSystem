@@ -16,18 +16,22 @@ namespace StockControlManagementEB
 {
     public partial class Login : Form
     {
+<<<<<<< HEAD
 
         //Need to use using tags instead of just if statments to make sure the connection is closed afterwards.
         string AccessString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;  //Connection String
         
 
+=======
+        
+>>>>>>> b3de94e98bdf5ac674b2f64abc0909d947ea9824
 
         public Login()
         {
             InitializeComponent();
         }
 
-        //private string access = "Hamzah8378";
+        //private string access = "";
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
