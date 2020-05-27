@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace StockControlManagementEB
 {
     public partial class HomePage : Form
     {
         private int childFormNumber = 0;
-        //SqlConnection con = new SqlConnection("Data Source=86.19.74.48\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=Hamzah8378");     //Public adapter
-        SqlConnection con = new SqlConnection("Data Source=192.168.0.104\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=Hamzah8378");
+        string AccessString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;  //Connection String
 
 
         public HomePage()
@@ -119,7 +119,7 @@ namespace StockControlManagementEB
         {
             //SqlDataAdapter sda = new SqlDataAdapter("CREATE TABLE '" + txtInput.Text + "'" , con);
 
-            
+            SqlConnection con = new SqlConnection(AccessString);
 
             string tableName = txtInput.Text;
             //t arraySize = Convert.ToInt32(txtFieldsAmount.Text);
@@ -164,6 +164,9 @@ namespace StockControlManagementEB
 
         private void btnViewAllTables_Click(object sender, EventArgs e)
         {
+
+            SqlConnection con = new SqlConnection(AccessString);
+
             try
             {
                 //SqlDataAdapter sda = new SqlDataAdapter("SELECT table_name FROM information_schema.tables WHERE table_type = 'base table'", con);
@@ -180,6 +183,8 @@ namespace StockControlManagementEB
                 //con.Close();
 
                 //Boolean flag = true;
+
+
 
                 con.Open();
 
@@ -235,6 +240,7 @@ namespace StockControlManagementEB
         {
 
             string tableName = txtTableDeleteName.Text;
+            SqlConnection con = new SqlConnection(AccessString);
 
             try
             {
@@ -286,6 +292,7 @@ namespace StockControlManagementEB
 
         private void btnViewData_Click(object sender, EventArgs e)
         {
+            SqlConnection con = new SqlConnection(AccessString);
 
             string tableName2 = txtViewTableName.Text;
 

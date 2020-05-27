@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace StockControlManagementEB
 {
@@ -27,6 +28,13 @@ namespace StockControlManagementEB
         private void AdminMenu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUsersForm_Click(object sender, EventArgs e)
+        {
+            UsersFormAdmin usersFormAdmin = new UsersFormAdmin();
+            usersFormAdmin.Show();
+            this.Close();
         }
     }
 }

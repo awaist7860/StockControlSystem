@@ -8,15 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+
 
 
 namespace StockControlManagementEB
 {
     public partial class Login : Form
     {
-        //Redo this when making the database on the public network
-        //SqlConnection con = new SqlConnection("Data Source=86.19.74.48\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=Hamzah8378");         //public addapter
-        SqlConnection con = new SqlConnection("Data Source=192.168.0.104\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=Hamzah8378");
+
+        //Need to use using tags instead of just if statments to make sure the connection is closed afterwards.
+        string AccessString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;  //Connection String
+        
+
 
         public Login()
         {
@@ -39,10 +43,15 @@ namespace StockControlManagementEB
         private void Login_Load(object sender, EventArgs e)
         {
             
+            
         }
 
         public void nextPageCheck()
         {
+
+            SqlConnection con = new SqlConnection(AccessString);
+            //startConnection();
+
             try
             {
                 //startConnection();
@@ -52,11 +61,6 @@ namespace StockControlManagementEB
                 con.Open();
                 SqlDataAdapter sda2 = new SqlDataAdapter("SELECT * FROM Users WHERE Username = '" + txtUserName.Text + "' AND Password = '" + txtPassword.Text + "' AND AdminAccess = 'No'", con);
                 con.Close();
-                //SqlDataAdapter sda2 = new SqlDataAdapter("SELECT AdminAccess FROM Users WHERE AdminUsers = 'Yes'", con);
-
-                //string sql = ("SELECT AdminAccess FROM USers WHERE AdminUsers = 'Yes'");
-
-
 
                 DataTable dt = new DataTable();
                 DataTable dt2 = new DataTable();
@@ -64,24 +68,7 @@ namespace StockControlManagementEB
                 sda.Fill(dt);
                 sda2.Fill(dt2);
 
-                //if ()
-                //{
-                //if (dt.Columns.Equals("AdminAccess"))
-                //{
-                //AdminMenu admin = new AdminMenu();
-                // admin.Show();
-                // }
-                //   else if (dt.Rows.Equals("No"))
-                //   {
-                //       NormalUserMenu normal = new NormalUserMenu();
-                //     normal.Show();
-                //   }
-
-                // }
-
-                //string ColumnName = dt[AdminAccess].toString();
-
-                if (dt.Rows.Count == 1)
+                if (dt.Rows.Count == 1) //Checks if the user exists in the table and is a normal user or not
                 {
 
                     this.Hide();
@@ -91,7 +78,7 @@ namespace StockControlManagementEB
                     admin.Show();
                     
                 }
-                else if (dt2.Rows.Count == 1)
+                else if (dt2.Rows.Count == 1)   //Checks if the user is in the table and is an admin or not
                 {
                     this.Hide();
                     NormalUserMenu normal = new NormalUserMenu();
@@ -99,18 +86,19 @@ namespace StockControlManagementEB
                 }
                 else
                 {
-                    MessageBox.Show("You entered a wrong username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You entered a wrong username and password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);  //Tells the user if they ahgve entered a wrong username or password
                 }
             }
             catch (Exception f) 
             {
-                MessageBox.Show("exception occured while accessing the database:" + f.Message + "\t" + f.GetType());
+                MessageBox.Show("exception occured while accessing the database:" + f.Message + "\t" + f.GetType());    //Tells the user what error has occured
             }
         }
 
         public void startConnection() 
         {
             //+ access);
+            //SqlConnection con = new SqlConnection(AccessString);
         }
 
     }
