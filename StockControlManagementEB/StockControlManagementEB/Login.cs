@@ -14,9 +14,7 @@ namespace StockControlManagementEB
 {
     public partial class Login : Form
     {
-        //Redo this when making the database on the public network
-        //SqlConnection con = new SqlConnection("Data Source=ip\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=");         //public addapter
-        SqlConnection con = new SqlConnection("Data Source=ip\\AWAISSQLEXPRESS;Initial Catalog=ImperialBeddingStockDatabase;Persist Security Info=True;User ID=SA;Password=");
+        
 
         public Login()
         {
