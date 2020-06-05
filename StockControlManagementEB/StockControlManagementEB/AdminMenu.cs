@@ -36,5 +36,17 @@ namespace StockControlManagementEB
             usersFormAdmin.Show();
             this.Close();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnTables_Click(object sender, EventArgs e)
+        {
+            TablesMenu tablesMenu = new TablesMenu();
+            tablesMenu.Show();
+            this.Close();
+        }
     }
 }

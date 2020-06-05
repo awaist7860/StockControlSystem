@@ -42,6 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtDelUserName = new System.Windows.Forms.TextBox();
             this.cmbAdmin = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,11 +172,22 @@
             this.cmbAdmin.Size = new System.Drawing.Size(100, 21);
             this.cmbAdmin.TabIndex = 32;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 562);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // UsersFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 597);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbAdmin);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtDelUserName);
@@ -214,5 +226,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDelUserName;
         private System.Windows.Forms.ComboBox cmbAdmin;
+        private System.Windows.Forms.Button button1;
     }
 }
