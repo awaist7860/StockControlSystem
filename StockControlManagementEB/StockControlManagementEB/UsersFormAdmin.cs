@@ -47,5 +47,74 @@ namespace StockControlManagementEB
         {
             Application.Exit();
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(AccessString);
+
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            string adminAccess = cmbAdmin.Text;
+
+            try
+            {
+                if (username == "" || password == "" || adminAccess == "")
+                {
+                    MessageBox.Show("Please enter a username and a password and select admin access");
+                }
+                else 
+                {
+                    SqlCommand sda = new SqlCommand("INSERT INTO Users VALUES ('" + username + "','" + password + "','" + adminAccess + "')", con); //This works
+                    con.Open();
+
+                    sda.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("User " + username + " has been created");
+                    btnViewUsers_Click(sender, e);
+                    txtPassword.Clear();
+                    txtUsername.Clear();
+                    cmbAdmin.Text = "";
+                }
+            }
+            catch (Exception f) 
+            {
+                MessageBox.Show("exception occured while creating table:" + f.Message + "\t" + f.GetType());
+                con.Close();
+            }
+        }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+
+            SqlConnection con = new SqlConnection(AccessString);
+
+            string username = txtDelUserName.Text;
+
+
+            try
+            {
+                if (username == "" || username == null)
+                {
+                    MessageBox.Show("Please enter a valid username");
+                }
+                else 
+                {
+                    SqlCommand sda = new SqlCommand("DELETE FROM Users WHERE Username = '" + username + "'", con); //This works
+                    con.Open();
+
+                    sda.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("User " + username + " has been deleted");
+                    btnViewUsers_Click(sender, e);
+                    txtDelUserName.Clear();
+                }
+                   
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show("exception occured while creating table:" + f.Message + "\t" + f.GetType());
+                con.Close();
+            }
+        }
     }
 }
