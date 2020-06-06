@@ -322,5 +322,12 @@ namespace StockControlManagementEB
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdminMenu adminMenu = new AdminMenu();
+            adminMenu.Show();
+            this.Close();
+        }
     }
 }
