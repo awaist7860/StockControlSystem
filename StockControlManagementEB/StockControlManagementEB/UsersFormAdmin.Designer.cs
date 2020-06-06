@@ -203,7 +203,8 @@
             this.Controls.Add(this.btnViewUsers);
             this.Controls.Add(this.dataGridView1);
             this.Name = "UsersFormAdmin";
-            this.Text = "UsersFormAdmin";
+            this.Text = ".";
+            this.Load += new System.EventHandler(this.UsersFormAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

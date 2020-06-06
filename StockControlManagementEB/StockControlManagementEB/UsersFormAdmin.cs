@@ -123,5 +123,10 @@ namespace StockControlManagementEB
             adminMenu.Show();
             this.Close();
         }
+
+        private void UsersFormAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
