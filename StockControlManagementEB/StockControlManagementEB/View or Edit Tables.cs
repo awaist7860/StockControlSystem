@@ -98,5 +98,21 @@ namespace StockControlManagementEB
         {
             Application.Exit();
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems != null)
+            {
+                string selectedName = "";
+                //selectedName = listBox1.SelectedItem.ToString();
+                selectedName = listBox1.GetItemText(listBox1.SelectedItem);
+
+                //var selected = new List<string>();
+                //selectedName = listBox1.SelectedItems.Cast<string>().ToString();
+                //label1.Text = selectedName;
+                //txtTableDeleteName.Text = selectedName; //label1.;
+                txtViewTableName.Text = selectedName;
+            }
+        }
     }
 }
