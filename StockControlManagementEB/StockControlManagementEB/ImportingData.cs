@@ -53,7 +53,7 @@ namespace StockControlManagementEB
             //ImportDataFromExcel();
             SqlConnection con = new SqlConnection(AccessString);
 
-            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel 97-2003 Workbook|*.xls|Excel Workbook|*.xlsx" })
+            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls "})
             {
                 if(openFileDialog.ShowDialog() == DialogResult.OK) 
                 {
