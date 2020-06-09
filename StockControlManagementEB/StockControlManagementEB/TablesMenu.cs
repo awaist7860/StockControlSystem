@@ -54,5 +54,12 @@ namespace StockControlManagementEB
             adminMenu.Show();
             this.Close();
         }
+
+        private void btnImportForm_Click(object sender, EventArgs e)
+        {
+            ImportingData importingData = new ImportingData();
+            importingData.Show();
+            this.Close();
+        }
     }
 }

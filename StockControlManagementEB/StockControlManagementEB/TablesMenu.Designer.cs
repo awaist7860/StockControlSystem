@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btnImportForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -58,7 +59,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 177);
+            this.button3.Location = new System.Drawing.Point(12, 227);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(141, 23);
             this.button3.TabIndex = 2;
@@ -89,7 +90,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 233);
+            this.button4.Location = new System.Drawing.Point(12, 283);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(141, 23);
             this.button4.TabIndex = 19;
@@ -97,11 +98,22 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // btnImportForm
+            // 
+            this.btnImportForm.Location = new System.Drawing.Point(12, 170);
+            this.btnImportForm.Name = "btnImportForm";
+            this.btnImportForm.Size = new System.Drawing.Size(141, 23);
+            this.btnImportForm.TabIndex = 20;
+            this.btnImportForm.Text = "Import Data";
+            this.btnImportForm.UseVisualStyleBackColor = true;
+            this.btnImportForm.Click += new System.EventHandler(this.btnImportForm_Click);
+            // 
             // TablesMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(165, 290);
+            this.ClientSize = new System.Drawing.Size(165, 363);
+            this.Controls.Add(this.btnImportForm);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label1);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnImportForm;
     }
 }
