@@ -47,34 +47,128 @@ namespace StockControlManagementEB
         private void button1_Click(object sender, EventArgs e)
         {
             //Log file
-            //string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            //string LogFolder = @"C:\Log\";
+            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string LogFolder = @"C:\Log\";
 
-            //ImportDataFromExcel();
+            ImportDataFromExcel();
             SqlConnection con = new SqlConnection(AccessString);
 
-            using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls "})
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())//{ Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls "})
             {
-                if(openFileDialog.ShowDialog() == DialogResult.OK) 
+                try
                 {
-                    textBox1.Text = openFileDialog.FileName;
-                    using(var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+
+
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        using(IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream)) 
+                        textBox1.Text = openFileDialog.FileName;
+                        using (var stream = File.Open(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                         {
-                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                            using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
                             {
-                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
+                                DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
                                 {
-                                    UseHeaderRow = true
+                                    ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
+                                    {
+                                        UseHeaderRow = true
+                                    }
+                                });
+                                tableCollection = result.Tables;
+                                comboBox1.Items.Clear();
+                                foreach (DataTable table in tableCollection)
+                                    comboBox1.Items.Add(table.TableName);
+                            }
+
+                            //string FolderPath = textBox1.Text;
+
+                            string FolderPath = @"C:\Users\awais\OneDrive\Desktop";
+
+                            var directory = new DirectoryInfo(FolderPath);
+                            FileInfo[] files = directory.GetFiles();
+
+
+                            string fileFullPath = "";
+
+                            foreach (FileInfo file in files)
+                            {
+                                string filename = "";
+                                fileFullPath = FolderPath + "\\" + file.Name;
+                                filename = file.Name.Replace(".xlsx", "");
+
+                                //Create excel connection
+                                string ConStr;
+                                string HDR;
+                                HDR = "YES";
+                                //ConStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileFullPath
+                                //+ ";Extended Properties=\"Excel 12.0;HDR=" + HDR + ";IMEX=1\"";
+
+                                //ConStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filename + ";Extended Properties=Excel 12.0;";
+                                ConStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + filename+ "; Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1;\"";
+                                OleDbConnection cnn = new OleDbConnection(ConStr);
+
+                                cnn.Open();
+                                DataTable dtSheet = cnn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                                string sheetname;
+                                sheetname = "";
+                                foreach (DataRow drSheet in dtSheet.Rows)
+                                {
+                                    if (drSheet["Table_Name"].ToString().Contains("$"))
+                                    {
+                                        sheetname = drSheet["Table_Name"].ToString();
+
+                                        OleDbCommand oconn = new OleDbCommand("SELECT * FROM [" + sheetname + "]", cnn);
+                                        OleDbDataAdapter adp = new OleDbDataAdapter(oconn);
+                                        DataTable dt = new DataTable();
+                                        adp.Fill(dt);
+
+                                        sheetname = sheetname.Replace("$", ""); //I can replace it with any value, currently it is no value
+
+                                        string tableDDL = "";
+                                        tableDDL += "IF EXISTS (SELECT * FROM sys.objects WHERE object_id = ";
+                                        tableDDL += "OBJECT_ID(N'[dbo].[" + filename + "_" + sheetname + "]') AND type in (N'U'))";
+                                        tableDDL += "Drop Table [dbo].[" + filename + "_" + sheetname + "]";
+                                        tableDDL += "Create table [" + filename + "_" + sheetname + "]";
+                                        tableDDL += "(";
+
+                                        for (int i = 0; i < dt.Columns.Count; i++)
+                                        {
+                                            if (i != dt.Columns.Count - 1)
+                                            {
+                                                tableDDL += "[" + dt.Columns[i].ColumnName + "] " + "NVarchar(max)" + ",";
+                                            }
+                                            else
+                                            {
+                                                tableDDL += "[" + dt.Columns[i].ColumnName + "] " + "NVarchar(max)";
+                                            }
+                                        }
+                                        tableDDL += ")";
+
+                                        con.Open();
+                                        SqlCommand sqlCMD = new SqlCommand(tableDDL, con);
+                                        sqlCMD.ExecuteNonQuery();
+
+                                        SqlBulkCopy blk = new SqlBulkCopy(con);
+                                        blk.DestinationTableName = "[" + fileFullPath + "_" + sheetname + "]";
+                                        blk.WriteToServer(dt);
+                                        con.Close();
+
+                                    }
                                 }
-                            });
-                            tableCollection = result.Tables;
-                            comboBox1.Items.Clear();
-                            foreach (DataTable table in tableCollection)
-                                comboBox1.Items.Add(table.TableName);
+                            }
                         }
                     }
+                }
+                catch (Exception exception)
+                {
+                    // Create Log File for Errors
+                    using (StreamWriter sw = File.CreateText(LogFolder
+                    + "\\" + "ErrorLog_" + datetime + ".log"))
+                    {
+                    sw.WriteLine(exception.ToString());
+
+                    }
+                    MessageBox.Show("Problem is " + exception.ToString());
                 }
             }
 

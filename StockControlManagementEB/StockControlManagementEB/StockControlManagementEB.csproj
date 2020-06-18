@@ -99,6 +99,21 @@
     <Compile Include="HomePage.Designer.cs">
       <DependentUpon>HomePage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImperialBeddingStockDatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ImperialBeddingStockDatabaseDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ImperialBeddingStockDatabaseDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ImportingData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +191,39 @@
     <EmbeddedResource Include="View or Edit Tables.resx">
       <DependentUpon>View or Edit Tables.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ImperialBeddingStockDatabaseDataSet.xsc">
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ImperialBeddingStockDatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet.xss">
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet1.xsc">
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ImperialBeddingStockDatabaseDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet1.xss">
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet2.xsc">
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ImperialBeddingStockDatabaseDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ImperialBeddingStockDatabaseDataSet2.xss">
+      <DependentUpon>ImperialBeddingStockDatabaseDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

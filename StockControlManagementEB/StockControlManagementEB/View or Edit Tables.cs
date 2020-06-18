@@ -114,5 +114,49 @@ namespace StockControlManagementEB
                 txtViewTableName.Text = selectedName;
             }
         }
+
+
+        //Printing works
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bm = new Bitmap(this.dataGridView1.Width, this.dataGridView1.Height);
+            dataGridView1.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
+            e.Graphics.DrawImage(bm, 0, 0);
+        }
+        //This method call works
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //printPreviewDialog1_Load(sender, e);
+
+            //Open the print dialog
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument1;
+            printDialog.UseEXDialog = true;
+
+            if (DialogResult.OK == printDialog.ShowDialog())
+            {
+                printDocument1.DocumentName = "Test Page Print";
+                printDocument1.Print();
+                //printPreviewDialog1_Load(sender, e);
+            }
+            /*
+            Note: In case you want to show the Print Preview Dialog instead of 
+            Print Dialog then comment the above code and uncomment the following code
+            */
+
+            //Open the print preview dialog
+            //PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
+            //objPPdialog.Document = printDocument1;
+            //objPPdialog.ShowDialog();
+
+        }
+
+
+
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+            //printDocument1.Print();
+        }
     }
 }
