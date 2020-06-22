@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using PagedList;
 
 namespace StockControlManagementEB
 {
@@ -78,7 +79,9 @@ namespace StockControlManagementEB
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 dataGridView1.DataSource = dt;
-                
+                lblTableName.Text = selectedName;
+
+
             }
             catch (Exception f)
             {
@@ -99,11 +102,13 @@ namespace StockControlManagementEB
             Application.Exit();
         }
 
+        public string selectedName = "";
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox1.SelectedItems != null)
             {
-                string selectedName = "";
+                
                 //selectedName = listBox1.SelectedItem.ToString();
                 selectedName = listBox1.GetItemText(listBox1.SelectedItem);
 
@@ -115,6 +120,7 @@ namespace StockControlManagementEB
             }
         }
 
+        //Bitmap bm;
 
         //Printing works
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -122,6 +128,8 @@ namespace StockControlManagementEB
             Bitmap bm = new Bitmap(this.dataGridView1.Width, this.dataGridView1.Height);
             dataGridView1.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
             e.Graphics.DrawImage(bm, 0, 0);
+            //printPreviewDialog1.ShowDialog();
+
         }
         //This method call works
         private void button2_Click(object sender, EventArgs e)
@@ -129,26 +137,36 @@ namespace StockControlManagementEB
             //printPreviewDialog1_Load(sender, e);
 
             //Open the print dialog
-            PrintDialog printDialog = new PrintDialog();
-            printDialog.Document = printDocument1;
-            printDialog.UseEXDialog = true;
+            //PrintDialog printDialog = new PrintDialog();
+            //printDialog.Document = printDocument1;
+            //printDialog.UseEXDialog = true;
 
-            if (DialogResult.OK == printDialog.ShowDialog())
-            {
-                printDocument1.DocumentName = "Test Page Print";
-                printDocument1.Print();
-                //printPreviewDialog1_Load(sender, e);
-            }
+            //if (DialogResult.OK == printDialog.ShowDialog())
+            //{
+            //printDocument1.DocumentName = "Test Page Print";
+            //printDocument1.Print();
+            //printPreviewDialog1_Load(sender, e);
+            //}
             /*
             Note: In case you want to show the Print Preview Dialog instead of 
             Print Dialog then comment the above code and uncomment the following code
             */
 
             //Open the print preview dialog
-            //PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
-            //objPPdialog.Document = printDocument1;
-            //objPPdialog.ShowDialog();
+            PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
+            objPPdialog.Document = printDocument1;
+            objPPdialog.ShowDialog();
 
+
+
+            //Something else
+            //int height = dataGridView1.Height;
+            //dataGridView1.Height = dataGridView1.RowCount * dataGridView1.RowTemplate.Height * 2;
+
+            //bm = new Bitmap(this.dataGridView1.Width, this.dataGridView1.Height);
+            //dataGridView1.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
+            //printPreviewDialog1.ShowDialog();
+            //printDocument1();
         }
 
 
@@ -156,7 +174,17 @@ namespace StockControlManagementEB
 
         private void printPreviewDialog1_Load(object sender, EventArgs e)
         {
-            //printDocument1.Print();
+            printDocument1.Print();
+        }
+
+        private void TableName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtViewTableName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
