@@ -12,11 +12,14 @@ using System.Configuration;
 using System.IO;
 using System.Data.OleDb;
 using ExcelDataReader;
+//using System.Reflection;
+//using Microsoft.Office.Interop.Excel;
 
 namespace StockControlManagementEB
 {
     public partial class ImportingData : Form
     {
+       
 
         string AccessString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;  //Connection String
 
@@ -290,7 +293,10 @@ namespace StockControlManagementEB
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Workbook workbook = new Workbook();
 
+            Printing printing = new Printing();
+            printing.PrintingExcelMethod(textBox1.Text);
         }
     }
 }

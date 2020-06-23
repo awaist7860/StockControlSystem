@@ -153,11 +153,23 @@ namespace StockControlManagementEB
             */
 
             //Open the print preview dialog
-            PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
-            objPPdialog.Document = printDocument1;
-            objPPdialog.ShowDialog();
+            //PrintPreviewDialog objPPdialog = new PrintPreviewDialog();  //Uncomment these 3 line later
+            //objPPdialog.Document = printDocument1;
+            //objPPdialog.ShowDialog();
 
-
+            //This opens up excel and copys the datafrom the datagrid to the excel sheet
+            copyAlltoClipboard();
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            CR.Select();
+            xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
 
             //Something else
             //int height = dataGridView1.Height;
@@ -167,6 +179,14 @@ namespace StockControlManagementEB
             //dataGridView1.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
             //printPreviewDialog1.ShowDialog();
             //printDocument1();
+        }
+
+        private void copyAlltoClipboard()
+        {
+            dataGridView1.SelectAll();
+            DataObject dataObj = dataGridView1.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
         }
 
 

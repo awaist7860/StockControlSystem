@@ -329,5 +329,11 @@ namespace StockControlManagementEB
             adminMenu.Show();
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Printing printing = new Printing();
+            printing.PrintingExcelMethod(textBox1.Text);
+        }
     }
 }
