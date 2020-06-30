@@ -49,7 +49,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(12, 415);
+            this.btnEdit.Location = new System.Drawing.Point(138, 553);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(120, 23);
             this.btnEdit.TabIndex = 29;
@@ -58,7 +58,7 @@
             // 
             // txtViewTableName
             // 
-            this.txtViewTableName.Location = new System.Drawing.Point(12, 295);
+            this.txtViewTableName.Location = new System.Drawing.Point(12, 527);
             this.txtViewTableName.Name = "txtViewTableName";
             this.txtViewTableName.Size = new System.Drawing.Size(120, 20);
             this.txtViewTableName.TabIndex = 28;
@@ -69,14 +69,14 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(149, 70);
+            this.dataGridView1.Location = new System.Drawing.Point(457, 70);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(443, 368);
+            this.dataGridView1.Size = new System.Drawing.Size(1136, 572);
             this.dataGridView1.TabIndex = 27;
             // 
             // btnViewData
             // 
-            this.btnViewData.Location = new System.Drawing.Point(12, 321);
+            this.btnViewData.Location = new System.Drawing.Point(12, 553);
             this.btnViewData.Name = "btnViewData";
             this.btnViewData.Size = new System.Drawing.Size(120, 23);
             this.btnViewData.TabIndex = 26;
@@ -86,7 +86,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(12, 200);
+            this.btnClear.Location = new System.Drawing.Point(331, 444);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(120, 23);
             this.btnClear.TabIndex = 25;
@@ -96,7 +96,7 @@
             // 
             // btnViewAllTables
             // 
-            this.btnViewAllTables.Location = new System.Drawing.Point(12, 171);
+            this.btnViewAllTables.Location = new System.Drawing.Point(12, 444);
             this.btnViewAllTables.Name = "btnViewAllTables";
             this.btnViewAllTables.Size = new System.Drawing.Size(120, 23);
             this.btnViewAllTables.TabIndex = 24;
@@ -109,14 +109,14 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 70);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.Size = new System.Drawing.Size(439, 368);
             this.listBox1.TabIndex = 23;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 279);
+            this.label1.Location = new System.Drawing.Point(12, 511);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 30;
@@ -135,7 +135,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(548, 12);
+            this.btnClose.Location = new System.Drawing.Point(1549, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(44, 23);
             this.btnClose.TabIndex = 35;
@@ -145,7 +145,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(12, 470);
+            this.btnPrint.Location = new System.Drawing.Point(167, 444);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(120, 23);
             this.btnPrint.TabIndex = 36;
@@ -180,7 +180,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(149, 50);
+            this.label2.Location = new System.Drawing.Point(454, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 13);
             this.label2.TabIndex = 38;
@@ -190,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 505);
+            this.ClientSize = new System.Drawing.Size(1605, 654);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTableName);
             this.Controls.Add(this.btnPrint);
