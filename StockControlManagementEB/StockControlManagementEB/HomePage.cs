@@ -335,5 +335,10 @@ namespace StockControlManagementEB
             Printing printing = new Printing();
             printing.PrintingExcelMethod(textBox1.Text);
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

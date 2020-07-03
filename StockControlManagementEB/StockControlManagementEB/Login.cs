@@ -9,8 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
-
-
+using System.Windows.Input;
 
 namespace StockControlManagementEB
 {
@@ -43,8 +42,10 @@ namespace StockControlManagementEB
         private void Login_Load(object sender, EventArgs e)
         {
             
-            
+
         }
+
+
 
         public void nextPageCheck()
         {
@@ -101,5 +102,30 @@ namespace StockControlManagementEB
             //SqlConnection con = new SqlConnection(AccessString);
         }
 
+        private void btnLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                nextPageCheck();
+            }
+        }
+
+        private void txtUserName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                nextPageCheck();
+            }
+        }
     }
 }

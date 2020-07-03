@@ -722,5 +722,15 @@ namespace StockControlManagementEB
             }
             con.Close();
         }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        private void btnFinalTest_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
