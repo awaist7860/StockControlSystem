@@ -48,6 +48,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btnFinalTest = new System.Windows.Forms.Button();
+            this.lblFileName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -230,7 +231,7 @@
             // 
             // btnFinalTest
             // 
-            this.btnFinalTest.Location = new System.Drawing.Point(414, 520);
+            this.btnFinalTest.Location = new System.Drawing.Point(273, 520);
             this.btnFinalTest.Name = "btnFinalTest";
             this.btnFinalTest.Size = new System.Drawing.Size(75, 23);
             this.btnFinalTest.TabIndex = 38;
@@ -238,11 +239,21 @@
             this.btnFinalTest.UseVisualStyleBackColor = true;
             this.btnFinalTest.Click += new System.EventHandler(this.btnFinalTest_Click);
             // 
+            // lblFileName
+            // 
+            this.lblFileName.AutoSize = true;
+            this.lblFileName.Location = new System.Drawing.Point(408, 529);
+            this.lblFileName.Name = "lblFileName";
+            this.lblFileName.Size = new System.Drawing.Size(51, 13);
+            this.lblFileName.TabIndex = 39;
+            this.lblFileName.Text = "FileName";
+            // 
             // ImportingData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1416, 654);
+            this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnFinalTest);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -295,5 +306,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnFinalTest;
+        private System.Windows.Forms.Label lblFileName;
     }
 }

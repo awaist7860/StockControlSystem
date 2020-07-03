@@ -97,6 +97,7 @@
     <Compile Include="Create Tables.Designer.cs">
       <DependentUpon>Create Tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateTable.cs" />
     <Compile Include="Delete Tables.cs">
       <SubType>Form</SubType>
     </Compile>
