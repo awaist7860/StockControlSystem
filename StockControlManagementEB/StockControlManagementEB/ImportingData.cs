@@ -804,14 +804,28 @@ namespace StockControlManagementEB
             MessageBox.Show(createTable.GetCreateTableSql(data));
             string CreateTableSQL1;
             string CreateTableSQL2;
-            CreateTableSQL1 = createTable.CreateTABLE("CreateTableStringTest2", data);
+            CreateTableSQL1 = createTable.CreateTABLE("Colours", data);
             CreateTableSQL2 = createTable.GetCreateTableSql(data);
+
+            //Log file
+            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string LogFolder = @"C:\Log\";
+
+            using (StreamWriter sw = File.CreateText(LogFolder
+                    + "\\" + "ErrorLog_" + datetime + ".log"))
+            {
+                sw.WriteLine("This is sql query with no primary keys or datatypes: " + CreateTableSQL1);
+                sw.WriteLine("This is sql query with primary keys and datatypes: " + CreateTableSQL2);
+
+            }
 
             SqlConnection con = new SqlConnection(AccessString);
             con.Open();
-            SqlCommand cmd = new SqlCommand(CreateTableSQL1, con);
+            SqlCommand cmd = new SqlCommand(CreateTableSQL2, con);
             cmd.ExecuteNonQuery();
             con.Close();
+
+
 
         }
 

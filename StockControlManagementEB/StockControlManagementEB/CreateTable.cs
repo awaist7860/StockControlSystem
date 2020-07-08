@@ -92,14 +92,14 @@ namespace StockControlManagementEB
                         usesColumnDefault = false;
                         break;
                     case "SYSTEM.STRING":
-                        sql.AppendFormat(" nvarchar({0})", table.Columns[i].MaxLength);
+                        sql.AppendFormat(" nvarchar(MAX)", table.Columns[i].MaxLength);
                         break;
                     case "SYSTEM.SINGLE":
                         sql.Append(" single");
                         isNumeric = true;
                         break;
                     case "SYSTEM.DOUBLE":
-                        sql.Append(" double");
+                        sql.Append(" INT");
                         isNumeric = true;
                         break;
                     case "SYSTEM.DECIMAL":
@@ -127,7 +127,7 @@ namespace StockControlManagementEB
                         {
                             if (isNumeric)
                             {
-                                alterSql.AppendFormat("\nALTER TABLE {0} ADD CONSTRAINT [DF_{0}_{1}]  DEFAULT ({2}) FOR [{1}];",
+                                alterSql.AppendFormat("\nALTER TABLE {0} ADD CONSTRAINT [DF_{0}_{1}]  DEFAULT ('{2}') FOR [{1}];",
                                     table.TableName,
                                     table.Columns[i].ColumnName,
                                     table.Columns[i].DefaultValue);
@@ -169,7 +169,7 @@ namespace StockControlManagementEB
                     sql.Append(" NOT NULL");
                 }
 
-                sql.Append(",");
+                sql.Append(" ,");
             }
 
             if (table.PrimaryKey.Length > 0)
