@@ -776,11 +776,43 @@ namespace StockControlManagementEB
             //MessageBox.Show(GetCreateTableSql(table));  //This one is better
 
             //create_Table.
-            
+
+            //DataTable dat = new DataTable();
+            //Creating DataTable.
+            DataTable dat = new DataTable();
+
+            //Adding the Columns.
+            //foreach (DataGridViewColumn column in dataGridView1.Columns)
+            //{
+                //dat.Columns.Add(column.HeaderText, column.ValueType);
+            //}
+
+            //Adding the Rows.
+            //foreach (DataGridViewRow row in dataGridView1.Rows)
+            //{
+                //dat.Rows.Add();
+                //foreach (DataGridViewCell cell in row.Cells)
+                //{
+                    //dat.Rows[dat.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+                //}
+            //}
 
             CreateTable createTable = new CreateTable();
-            MessageBox.Show(createTable.CreateTABLE("CreateTableStringTest", table));
-            MessageBox.Show(createTable.GetCreateTableSql(table));
+            DataTable data = (DataTable)(dataGridView1.DataSource);
+
+            MessageBox.Show(createTable.CreateTABLE("CreateTableStringTest2", data));
+            MessageBox.Show(createTable.GetCreateTableSql(data));
+            string CreateTableSQL1;
+            string CreateTableSQL2;
+            CreateTableSQL1 = createTable.CreateTABLE("CreateTableStringTest2", data);
+            CreateTableSQL2 = createTable.GetCreateTableSql(data);
+
+            SqlConnection con = new SqlConnection(AccessString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand(CreateTableSQL1, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
         }
 
 

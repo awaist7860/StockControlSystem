@@ -43,7 +43,9 @@
             this.txtDelUserName = new System.Windows.Forms.TextBox();
             this.cmbAdmin = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.imperialBeddingStockDatabaseDataSet1 = new StockControlManagementEB.ImperialBeddingStockDatabaseDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imperialBeddingStockDatabaseDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -182,6 +184,11 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // imperialBeddingStockDatabaseDataSet1
+            // 
+            this.imperialBeddingStockDatabaseDataSet1.DataSetName = "ImperialBeddingStockDatabaseDataSet";
+            this.imperialBeddingStockDatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // UsersFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +213,7 @@
             this.Text = ".";
             this.Load += new System.EventHandler(this.UsersFormAdmin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imperialBeddingStockDatabaseDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +236,6 @@
         private System.Windows.Forms.TextBox txtDelUserName;
         private System.Windows.Forms.ComboBox cmbAdmin;
         private System.Windows.Forms.Button button1;
+        private ImperialBeddingStockDatabaseDataSet imperialBeddingStockDatabaseDataSet1;
     }
 }

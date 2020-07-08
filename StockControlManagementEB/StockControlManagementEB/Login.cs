@@ -76,7 +76,7 @@ namespace StockControlManagementEB
                     //HomePage homePage = new HomePage();
                     //homePage.Show();
                     AdminMenu admin = new AdminMenu();
-                    admin.Show();
+                    admin.Show(); 
                     
                 }
                 else if (dt2.Rows.Count == 1)   //Checks if the user is in the table and is an admin or not
