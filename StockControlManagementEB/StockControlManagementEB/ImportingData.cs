@@ -175,7 +175,7 @@ namespace StockControlManagementEB
                         sw.WriteLine(exception.ToString());
 
                     }
-                    MessageBox.Show("Problem is " + exception.ToString());
+                    //MessageBox.Show("Problem is " + exception.ToString());
                 }
             }
 
@@ -734,37 +734,44 @@ namespace StockControlManagementEB
 
         private void btnFinalTest_Click(object sender, EventArgs e)
         {
-            DataTable table = new DataTable("Users");
 
-            table.Columns.Add(new DataColumn()
-            {
-                ColumnName = "UserId",
-                DataType = System.Type.GetType("System.Int32"),
-                AutoIncrement = true,
-                AllowDBNull = false,
-                AutoIncrementSeed = 1,
-                AutoIncrementStep = 1
-            });
+            //ctrl + k + c to comment out whole blocks of code
 
-            table.Columns.Add(new DataColumn()
-            {
-                ColumnName = "UserName",
-                DataType = System.Type.GetType("System.String"),
-                AllowDBNull = true,
-                DefaultValue = String.Empty,
-                MaxLength = 50
-            });
+            //This creats a new data table to test
+            //DataTable table = new DataTable("Users");
 
-            table.Columns.Add(new DataColumn()
-            {
-                ColumnName = "LastUpdate",
-                DataType = System.Type.GetType("System.DateTime"),
-                AllowDBNull = false,
-                DefaultValue = DateTime.Now,
-                Caption = "<defaultValue>GETDATE()</defaultValue>"
-            });
+            //table.Columns.Add(new DataColumn()
+            //{
+            //    ColumnName = "UserId",
+            //    DataType = System.Type.GetType("System.Int32"),
+            //    AutoIncrement = true,
+            //    AllowDBNull = false,
+            //    AutoIncrementSeed = 1,
+            //    AutoIncrementStep = 1
+            //});
 
-            table.PrimaryKey = new DataColumn[] { table.Columns[0] };
+            //table.Columns.Add(new DataColumn()
+            //{
+            //    ColumnName = "UserName",
+            //    DataType = System.Type.GetType("System.String"),
+            //    AllowDBNull = true,
+            //    DefaultValue = String.Empty,
+            //    MaxLength = 50
+            //});
+
+            //table.Columns.Add(new DataColumn()
+            //{
+                //ColumnName = "LastUpdate",
+                //DataType = System.Type.GetType("System.DateTime"),
+                //AllowDBNull = false,
+                //DefaultValue = DateTime.Now,
+                //Caption = "<defaultValue>GETDATE()</defaultValue>"
+            //});
+            //Data table is created by here
+
+
+
+            //table.PrimaryKey = new DataColumn[] { table.Columns[0] };
 
             //string sql = DataHelper.GetCreateTableSql(table);
 
@@ -779,7 +786,7 @@ namespace StockControlManagementEB
 
             //DataTable dat = new DataTable();
             //Creating DataTable.
-            DataTable dat = new DataTable();
+            //DataTable dat = new DataTable();
 
             //Adding the Columns.
             //foreach (DataGridViewColumn column in dataGridView1.Columns)
@@ -824,6 +831,8 @@ namespace StockControlManagementEB
             SqlCommand cmd = new SqlCommand(CreateTableSQL2, con);
             cmd.ExecuteNonQuery();
             con.Close();
+
+
 
 
 
