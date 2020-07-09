@@ -761,11 +761,11 @@ namespace StockControlManagementEB
 
             //table.Columns.Add(new DataColumn()
             //{
-                //ColumnName = "LastUpdate",
-                //DataType = System.Type.GetType("System.DateTime"),
-                //AllowDBNull = false,
-                //DefaultValue = DateTime.Now,
-                //Caption = "<defaultValue>GETDATE()</defaultValue>"
+            //ColumnName = "LastUpdate",
+            //DataType = System.Type.GetType("System.DateTime"),
+            //AllowDBNull = false,
+            //DefaultValue = DateTime.Now,
+            //Caption = "<defaultValue>GETDATE()</defaultValue>"
             //});
             //Data table is created by here
 
@@ -791,49 +791,90 @@ namespace StockControlManagementEB
             //Adding the Columns.
             //foreach (DataGridViewColumn column in dataGridView1.Columns)
             //{
-                //dat.Columns.Add(column.HeaderText, column.ValueType);
+            //dat.Columns.Add(column.HeaderText, column.ValueType);
             //}
 
             //Adding the Rows.
             //foreach (DataGridViewRow row in dataGridView1.Rows)
             //{
-                //dat.Rows.Add();
-                //foreach (DataGridViewCell cell in row.Cells)
-                //{
-                    //dat.Rows[dat.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
-                //}
+            //dat.Rows.Add();
+            //foreach (DataGridViewCell cell in row.Cells)
+            //{
+            //dat.Rows[dat.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+            //}
             //}
 
-            CreateTable createTable = new CreateTable();
-            DataTable data = (DataTable)(dataGridView1.DataSource);
-
-            MessageBox.Show(createTable.CreateTABLE("CreateTableStringTest2", data));
-            MessageBox.Show(createTable.GetCreateTableSql(data));
             string CreateTableSQL1;
             string CreateTableSQL2;
-            CreateTableSQL1 = createTable.CreateTABLE("Colours", data);
-            CreateTableSQL2 = createTable.GetCreateTableSql(data);
-
-            //Log file
             string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string LogFolder = @"C:\Log\";
+            string LogFolder = @"C:\Log\";  //Log file
 
-            using (StreamWriter sw = File.CreateText(LogFolder
-                    + "\\" + "ErrorLog_" + datetime + ".log"))
+            CreateTable createTable = new CreateTable();    //Creates a createTable Object from the class
+            DataTable data = (DataTable)(dataGridView1.DataSource); //Gives the datatable the data from the datagridViews
+
+            MessageBox.Show(createTable.CreateTABLE("CreateTableStringTest2", data));   //Calls the CreateTable method from the class and gives it the 2 parameters, first one is a string for the name and the second one is a datatable with the data
+            MessageBox.Show(createTable.GetCreateTableSql(data, "Colours"));   //Calls the GetCreateTableSql method from the class and gives it a parameter, which is a datatable with the data
+
+            //Giving the varaibles the sql command to be later run
+            CreateTableSQL1 = createTable.CreateTABLE("Colours", data);
+            CreateTableSQL2 = createTable.GetCreateTableSql(data, "Colours");
+
+            //This is the log file being created
+            using (StreamWriter sw = File.CreateText(LogFolder + "\\" + "ErrorLog_" + datetime + ".log"))
             {
                 sw.WriteLine("This is sql query with no primary keys or datatypes: " + CreateTableSQL1);
                 sw.WriteLine("This is sql query with primary keys and datatypes: " + CreateTableSQL2);
-
             }
 
+            //Sql command that is being run
+            //This command creates  a table
             SqlConnection con = new SqlConnection(AccessString);
             con.Open();
             SqlCommand cmd = new SqlCommand(CreateTableSQL2, con);
             cmd.ExecuteNonQuery();
             con.Close();
 
+            //This command inserts data in to that table
+            //this.dataGridView1.EndEdit();
+            //this.
 
+            //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            //{
+            //    string StrQuery = @"INSERT INTO tableName VALUES (" + dataGridView1.Rows[i].Cells["ColumnName"].Value + ", " + dataGridView1.Rows[i].Cells["ColumnName"].Value + ");";
 
+            //    try
+            //    {
+            //        SqlConnection conn = new SqlConnection();
+            //        conn.Open();
+
+            //        using (SqlCommand comm = new SqlCommand(StrQuery, conn))
+            //        {
+            //            comm.ExecuteNonQuery();
+            //        }
+            //        conn.Close();
+
+            //    }
+            //    catch (Exception f)
+            //    {
+            //        MessageBox.Show("Error is: " + f); 
+            //    }
+
+            //}
+
+            con.Open();
+            SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
+            //I assume you have created the table previously
+            //Someone else here already showed how  
+            bulkcopy.DestinationTableName = "Colours";
+            try
+            {
+                bulkcopy.WriteToServer(data);
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show("Error is: " + f);
+            }
+            con.Close();
 
 
         }

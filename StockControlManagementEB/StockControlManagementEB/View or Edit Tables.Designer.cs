@@ -71,7 +71,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(457, 70);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1136, 572);
+            this.dataGridView1.Size = new System.Drawing.Size(809, 572);
             this.dataGridView1.TabIndex = 27;
             // 
             // btnViewData
@@ -112,6 +112,7 @@
             this.listBox1.Size = new System.Drawing.Size(439, 368);
             this.listBox1.TabIndex = 23;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // label1
             // 
@@ -135,7 +136,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(1549, 12);
+            this.btnClose.Location = new System.Drawing.Point(1222, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(44, 23);
             this.btnClose.TabIndex = 35;
@@ -190,7 +191,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1605, 654);
+            this.ClientSize = new System.Drawing.Size(1278, 654);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblTableName);
             this.Controls.Add(this.btnPrint);

@@ -280,5 +280,10 @@ namespace StockControlManagementEB
         {
 
         }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            btnViewData_Click(sender, e);
+        }
     }
 }

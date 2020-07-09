@@ -59,12 +59,13 @@ namespace StockControlManagementEB
             return sqlsc.Substring(0, sqlsc.Length - 1) + "\n)";
         }
 
-        public string GetCreateTableSql(DataTable table)
+        public string GetCreateTableSql(DataTable table, String tableName)
         {
             StringBuilder sql = new StringBuilder();
             StringBuilder alterSql = new StringBuilder();
 
-            sql.AppendFormat("CREATE TABLE [{0}] (", table.TableName);
+            //sql.AppendFormat("CREATE TABLE [{0}] (", table.TableName);    //If it doesnt work comment the bottom line anmd uncomment this
+            sql.AppendFormat("CREATE TABLE [{0}] (", tableName);
 
             for (int i = 0; i < table.Columns.Count; i++)
             {
@@ -128,14 +129,16 @@ namespace StockControlManagementEB
                             if (isNumeric)
                             {
                                 alterSql.AppendFormat("\nALTER TABLE {0} ADD CONSTRAINT [DF_{0}_{1}]  DEFAULT ('{2}') FOR [{1}];",
-                                    table.TableName,
+                                    //table.TableName,
+                                    tableName,
                                     table.Columns[i].ColumnName,
                                     table.Columns[i].DefaultValue);
                             }
                             else
                             {
                                 alterSql.AppendFormat("\nALTER TABLE {0} ADD CONSTRAINT [DF_{0}_{1}]  DEFAULT ('{2}') FOR [{1}];",
-                                    table.TableName,
+                                    //table.TableName,
+                                    tableName,
                                     table.Columns[i].ColumnName,
                                     table.Columns[i].DefaultValue);
                             }
@@ -151,7 +154,8 @@ namespace StockControlManagementEB
                                 xml.LoadXml(table.Columns[i].Caption);
 
                                 alterSql.AppendFormat("\nALTER TABLE {0} ADD CONSTRAINT [DF_{0}_{1}]  DEFAULT ({2}) FOR [{1}];",
-                                    table.TableName,
+                                    //table.TableName,
+                                    tableName,
                                     table.Columns[i].ColumnName,
                                     xml.GetElementsByTagName("defaultValue")[0].InnerText);
                             }
@@ -176,7 +180,8 @@ namespace StockControlManagementEB
             {
                 StringBuilder primaryKeySql = new StringBuilder();
 
-                primaryKeySql.AppendFormat("\n\tCONSTRAINT PK_{0} PRIMARY KEY (", table.TableName);
+                //primaryKeySql.AppendFormat("\n\tCONSTRAINT PK_{0} PRIMARY KEY (", table.TableName);
+                primaryKeySql.AppendFormat("\n\tCONSTRAINT PK_{0} PRIMARY KEY (", tableName);
 
                 for (int i = 0; i < table.PrimaryKey.Length; i++)
                 {
