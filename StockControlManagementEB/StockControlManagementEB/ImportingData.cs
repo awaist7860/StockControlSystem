@@ -753,15 +753,17 @@ namespace StockControlManagementEB
             //This is a long work around to get a proper string, need to make it smaller
             label1.Text = filename;
             tableName = label1.Text;
-            tableName = tableName + "_" + comboBox1.Text;
+            tableName = tableName.Replace(" ", "_");
+            //tableName = tableName + "_" + comboBox1.Text;
+            MessageBox.Show("Filename is: " + tableName);
 
 
 
-            //MessageBox.Show(createTable.CreateTABLE("CreateTableStringTest2", data));   //Calls the CreateTable method from the class and gives it the 2 parameters, first one is a string for the name and the second one is a datatable with the data
-            //MessageBox.Show(createTable.GetCreateTableSql(data, "Colours"));   //Calls the GetCreateTableSql method from the class and gives it a parameter, which is a datatable with the data
+            MessageBox.Show(createTable.CreateTABLE(tableName, data));   //Calls the CreateTable method from the class and gives it the 2 parameters, first one is a string for the name and the second one is a datatable with the data
+            MessageBox.Show(createTable.GetCreateTableSql(data, tableName));   //Calls the GetCreateTableSql method from the class and gives it a parameter, which is a datatable with the data
 
             //Giving the varaibles the sql command to be later run
-            CreateTableSQL1 = createTable.CreateTABLE("Colours", data);
+            CreateTableSQL1 = createTable.CreateTABLE(tableName, data);
             CreateTableSQL2 = createTable.GetCreateTableSql(data, tableName);
 
             //This is the log file being created
