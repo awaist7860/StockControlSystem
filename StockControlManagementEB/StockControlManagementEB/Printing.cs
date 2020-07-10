@@ -12,6 +12,7 @@ namespace StockControlManagementEB
     {
         public void PrintingExcelMethod(string filename)
         {
+            
             Application ExcelApp = new Application();
             ExcelApp.Visible = false;
             ExcelApp.DisplayAlerts = false;

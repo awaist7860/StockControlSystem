@@ -60,5 +60,10 @@ namespace StockControlManagementEB
         {
             Application.Exit();
         }
+
+        private void Delete_Tables_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

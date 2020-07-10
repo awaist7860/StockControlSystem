@@ -61,5 +61,10 @@ namespace StockControlManagementEB
             importingData.Show();
             this.Close();
         }
+
+        private void TablesMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

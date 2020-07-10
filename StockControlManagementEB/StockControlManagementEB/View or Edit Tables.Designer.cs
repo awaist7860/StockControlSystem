@@ -207,6 +207,7 @@
             this.Controls.Add(this.listBox1);
             this.Name = "View_or_Edit_Tables";
             this.Text = "View_or_Edit_Tables";
+            this.Load += new System.EventHandler(this.View_or_Edit_Tables_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

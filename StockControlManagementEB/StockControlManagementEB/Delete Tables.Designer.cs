@@ -84,6 +84,7 @@
             this.Controls.Add(this.btnDeleteTable);
             this.Name = "Delete_Tables";
             this.Text = "Delete_Tables";
+            this.Load += new System.EventHandler(this.Delete_Tables_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

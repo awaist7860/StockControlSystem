@@ -122,6 +122,7 @@
             this.Controls.Add(this.button1);
             this.Name = "TablesMenu";
             this.Text = "TablesMenu";
+            this.Load += new System.EventHandler(this.TablesMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

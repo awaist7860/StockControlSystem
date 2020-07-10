@@ -59,10 +59,12 @@ namespace StockControlManagementEB
             return sqlsc.Substring(0, sqlsc.Length - 1) + "\n)";
         }
 
-        public string GetCreateTableSql(DataTable table, String tableName)
+        public string GetCreateTableSql(DataTable table, string tableName)
         {
             StringBuilder sql = new StringBuilder();
             StringBuilder alterSql = new StringBuilder();
+            //string fullTableName;
+            //fullTableName = tableName + table.TableName;
 
             //sql.AppendFormat("CREATE TABLE [{0}] (", table.TableName);    //If it doesnt work comment the bottom line anmd uncomment this
             sql.AppendFormat("CREATE TABLE [{0}] (", tableName);

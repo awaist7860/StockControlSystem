@@ -285,5 +285,10 @@ namespace StockControlManagementEB
         {
             btnViewData_Click(sender, e);
         }
+
+        private void View_or_Edit_Tables_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

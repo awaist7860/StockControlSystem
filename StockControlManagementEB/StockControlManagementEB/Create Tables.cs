@@ -103,5 +103,10 @@ namespace StockControlManagementEB
             tablesMenu.Show();
             this.Close();
         }
+
+        private void Create_Tables_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -148,6 +148,7 @@
             this.Controls.Add(this.btnClose);
             this.Name = "Create_Tables";
             this.Text = "Create_Tables";
+            this.Load += new System.EventHandler(this.Create_Tables_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
