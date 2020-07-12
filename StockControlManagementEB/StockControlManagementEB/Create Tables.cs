@@ -15,6 +15,7 @@ namespace StockControlManagementEB
 {
     public partial class Create_Tables : Form
     {
+        public string UserTableName;
 
         string AccessString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;  //Connection String
 
@@ -32,12 +33,13 @@ namespace StockControlManagementEB
         {
             SqlConnection con = new SqlConnection(AccessString);
 
-            string tableName = txtInput.Text;
+            //string tableName = txtInput.Text;
+
 
             try
             {
                 //User can create their own table with their own table name
-                SqlCommand sda = new SqlCommand("CREATE TABLE " + tableName + " (ProductID INTEGER PRIMARY KEY, ProductName varchar(50), ProductSize varchar(50), ProductColour varchar(50), ProductStyle varchar(50))", con); //This works
+                SqlCommand sda = new SqlCommand("CREATE TABLE " + UserTableName + " (ProductID INTEGER PRIMARY KEY, ProductName varchar(50), ProductSize varchar(50), ProductColour varchar(50), ProductStyle varchar(50))", con); //This works
                 con.Open();
                 //sda.ExecuteNonQuery();
                 sda.ExecuteNonQuery();
@@ -108,5 +110,35 @@ namespace StockControlManagementEB
         {
 
         }
+
+        private void btnConfirmName_Click(object sender, EventArgs e)
+        {
+            UserTableName = txtInput.Text;
+            UserTableName = UserTableName.Replace(" ", "_");
+
+
+            SqlConnection con = new SqlConnection(AccessString);
+
+            //string tableName = txtInput.Text;
+
+
+            try
+            {
+                //User can create their own table with their own table name
+                SqlCommand sda = new SqlCommand("CREATE TABLE " + UserTableName + "(ProductID INTEGER PRIMARY KEY)", con); //This works
+                con.Open();
+                //sda.ExecuteNonQuery();
+                sda.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show(UserTableName + " table Created");
+                //btnViewAllTables_Click(sender, e);
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("exception occured while creating table:" + a.Message + "\t" + a.GetType());
+            }
+        }
+
     }
+    
 }

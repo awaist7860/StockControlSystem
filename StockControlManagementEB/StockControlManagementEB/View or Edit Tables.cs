@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
 using PagedList;
+using System.Drawing.Printing;
 
 namespace StockControlManagementEB
 {
@@ -17,6 +18,7 @@ namespace StockControlManagementEB
     {
 
         string AccessString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;  //Connection String
+
 
         public View_or_Edit_Tables()
         {
@@ -108,7 +110,7 @@ namespace StockControlManagementEB
         {
             if (listBox1.SelectedItems != null)
             {
-                
+
                 //selectedName = listBox1.SelectedItem.ToString();
                 selectedName = listBox1.GetItemText(listBox1.SelectedItem);
 
@@ -134,6 +136,13 @@ namespace StockControlManagementEB
         //This method call works
         private void button2_Click(object sender, EventArgs e)
         {
+
+
+
+
+            //Printing printing = new Printing();
+            //printing.PrintingExcelMethod(txtViewTableName.Text);
+
             //printPreviewDialog1_Load(sender, e);
 
             //Open the print dialog
@@ -290,5 +299,10 @@ namespace StockControlManagementEB
         {
 
         }
+
+        //Printing again a different way
+
+
+
     }
 }

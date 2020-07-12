@@ -38,12 +38,19 @@
             this.btnViewAllTables = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnConfirmName = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(241, 7);
+            this.btnClose.Location = new System.Drawing.Point(944, 7);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(44, 23);
             this.btnClose.TabIndex = 18;
@@ -54,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(151, 56);
+            this.label2.Location = new System.Drawing.Point(104, 629);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 23;
@@ -62,7 +69,7 @@
             // 
             // txtFieldsAmount
             // 
-            this.txtFieldsAmount.Location = new System.Drawing.Point(151, 75);
+            this.txtFieldsAmount.Location = new System.Drawing.Point(104, 648);
             this.txtFieldsAmount.Name = "txtFieldsAmount";
             this.txtFieldsAmount.Size = new System.Drawing.Size(100, 20);
             this.txtFieldsAmount.TabIndex = 22;
@@ -70,7 +77,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 56);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 21;
@@ -78,7 +85,8 @@
             // 
             // btnCreateTable
             // 
-            this.btnCreateTable.Location = new System.Drawing.Point(12, 101);
+            this.btnCreateTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCreateTable.Location = new System.Drawing.Point(913, 443);
             this.btnCreateTable.Name = "btnCreateTable";
             this.btnCreateTable.Size = new System.Drawing.Size(75, 44);
             this.btnCreateTable.TabIndex = 20;
@@ -88,14 +96,14 @@
             // 
             // txtInput
             // 
-            this.txtInput.Location = new System.Drawing.Point(12, 75);
+            this.txtInput.Location = new System.Drawing.Point(12, 31);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(100, 20);
             this.txtInput.TabIndex = 19;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(154, 295);
+            this.btnClear.Location = new System.Drawing.Point(154, 598);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 26;
@@ -105,7 +113,7 @@
             // 
             // btnViewAllTables
             // 
-            this.btnViewAllTables.Location = new System.Drawing.Point(12, 295);
+            this.btnViewAllTables.Location = new System.Drawing.Point(12, 598);
             this.btnViewAllTables.Name = "btnViewAllTables";
             this.btnViewAllTables.Size = new System.Drawing.Size(120, 23);
             this.btnViewAllTables.TabIndex = 25;
@@ -116,14 +124,14 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 167);
+            this.listBox1.Location = new System.Drawing.Point(12, 450);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.Size = new System.Drawing.Size(336, 134);
             this.listBox1.TabIndex = 24;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 415);
+            this.button1.Location = new System.Drawing.Point(12, 641);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 35;
@@ -131,11 +139,64 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 84);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(973, 91);
+            this.dataGridView1.TabIndex = 36;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(15, 201);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(973, 223);
+            this.dataGridView2.TabIndex = 37;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 68);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 182);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 39;
+            this.label4.Text = "label4";
+            // 
+            // btnConfirmName
+            // 
+            this.btnConfirmName.Location = new System.Drawing.Point(118, 31);
+            this.btnConfirmName.Name = "btnConfirmName";
+            this.btnConfirmName.Size = new System.Drawing.Size(97, 23);
+            this.btnConfirmName.TabIndex = 40;
+            this.btnConfirmName.Text = "Confirm Name";
+            this.btnConfirmName.UseVisualStyleBackColor = true;
+            this.btnConfirmName.Click += new System.EventHandler(this.btnConfirmName_Click);
+            // 
             // Create_Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(297, 450);
+            this.ClientSize = new System.Drawing.Size(1000, 683);
+            this.Controls.Add(this.btnConfirmName);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnViewAllTables);
@@ -149,6 +210,8 @@
             this.Name = "Create_Tables";
             this.Text = "Create_Tables";
             this.Load += new System.EventHandler(this.Create_Tables_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +229,10 @@
         private System.Windows.Forms.Button btnViewAllTables;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnConfirmName;
     }
 }
