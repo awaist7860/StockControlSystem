@@ -39,7 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnTestImport = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.lblFiileName = new System.Windows.Forms.Label();
             this.btnImport2 = new System.Windows.Forms.Button();
             this.btnBrowse2 = new System.Windows.Forms.Button();
             this.cmbSheetName2 = new System.Windows.Forms.ComboBox();
@@ -49,6 +48,9 @@
             this.button5 = new System.Windows.Forms.Button();
             this.btnFinalTest = new System.Windows.Forms.Button();
             this.lblFileName = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblFiileName = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -154,15 +156,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(667, 308);
             this.dataGridView2.TabIndex = 27;
             // 
-            // lblFiileName
-            // 
-            this.lblFiileName.AutoSize = true;
-            this.lblFiileName.Location = new System.Drawing.Point(683, 419);
-            this.lblFiileName.Name = "lblFiileName";
-            this.lblFiileName.Size = new System.Drawing.Size(35, 13);
-            this.lblFiileName.TabIndex = 29;
-            this.lblFiileName.Text = "label3";
-            // 
             // btnImport2
             // 
             this.btnImport2.Location = new System.Drawing.Point(1278, 374);
@@ -231,28 +224,57 @@
             // 
             // btnFinalTest
             // 
-            this.btnFinalTest.Location = new System.Drawing.Point(273, 520);
+            this.btnFinalTest.Location = new System.Drawing.Point(605, 419);
             this.btnFinalTest.Name = "btnFinalTest";
             this.btnFinalTest.Size = new System.Drawing.Size(75, 23);
             this.btnFinalTest.TabIndex = 38;
-            this.btnFinalTest.Text = "Final Test";
+            this.btnFinalTest.Text = "Import";
             this.btnFinalTest.UseVisualStyleBackColor = true;
             this.btnFinalTest.Click += new System.EventHandler(this.btnFinalTest_Click);
             // 
             // lblFileName
             // 
             this.lblFileName.AutoSize = true;
-            this.lblFileName.Location = new System.Drawing.Point(408, 529);
+            this.lblFileName.Location = new System.Drawing.Point(105, 419);
             this.lblFileName.Name = "lblFileName";
             this.lblFileName.Size = new System.Drawing.Size(51, 13);
             this.lblFileName.TabIndex = 39;
             this.lblFileName.Text = "FileName";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(751, 419);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "Igonore this side";
+            // 
+            // lblFiileName
+            // 
+            this.lblFiileName.AutoSize = true;
+            this.lblFiileName.Location = new System.Drawing.Point(683, 419);
+            this.lblFiileName.Name = "lblFiileName";
+            this.lblFiileName.Size = new System.Drawing.Size(35, 13);
+            this.lblFiileName.TabIndex = 29;
+            this.lblFiileName.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(274, 429);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(102, 13);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "This is the main side";
             // 
             // ImportingData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1416, 654);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnFinalTest);
             this.Controls.Add(this.button5);
@@ -297,7 +319,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnTestImport;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label lblFiileName;
         private System.Windows.Forms.Button btnImport2;
         private System.Windows.Forms.Button btnBrowse2;
         private System.Windows.Forms.ComboBox cmbSheetName2;
@@ -307,5 +328,8 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnFinalTest;
         private System.Windows.Forms.Label lblFileName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblFiileName;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -38,7 +38,7 @@ namespace StockControlManagementEB
 
                 sqlCmd.Connection = con;
                 sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.CommandText = "Select table_name from information_schema.tables";
+                sqlCmd.CommandText = "Select table_name from information_schema.tables"; // WHERE table_name <> User";
 
                 SqlDataAdapter sqlDataAdap = new SqlDataAdapter(sqlCmd);
 
@@ -64,6 +64,8 @@ namespace StockControlManagementEB
         {
             listBox1.DataSource = null;
             listBox1.Items.Clear();
+            dataGridView1.DataSource = null;
+            
         }
 
         private void btnViewData_Click(object sender, EventArgs e)
@@ -125,17 +127,30 @@ namespace StockControlManagementEB
         //Bitmap bm;
 
         //Printing works
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            Bitmap bm = new Bitmap(this.dataGridView1.Width, this.dataGridView1.Height);
-            dataGridView1.DrawToBitmap(bm, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
-            e.Graphics.DrawImage(bm, 0, 0);
-            //printPreviewDialog1.ShowDialog();
+        Bitmap bmp;
 
-        }
         //This method call works
         private void button2_Click(object sender, EventArgs e)
         {
+
+            int height = dataGridView1.Height;
+            dataGridView1.Height = dataGridView1.RowCount * dataGridView1.RowTemplate.Height * 2;
+            bmp = new Bitmap(dataGridView1.Width, dataGridView1.Height);
+            dataGridView1.DrawToBitmap(bmp, new Rectangle(0, 0, dataGridView1.Width, dataGridView1.Height));
+            dataGridView1.Height = height;
+            //printPreviewDialog1.ShowDialog();
+
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument1;
+            printDialog.UseEXDialog = true;
+
+            if (DialogResult.OK == printDialog.ShowDialog())
+            {
+                printDocument1.DocumentName = "Test Page Print";
+                printDocument1.Print();
+                printPreviewDialog1_Load(sender, e);
+            }
+
 
 
 
@@ -183,58 +198,58 @@ namespace StockControlManagementEB
 
 
             //Make a class that exports data from a datagrid view box to an excel file
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel Documents (*.xls)|*.xls";
-            sfd.FileName = "Inventory_Adjustment_Export.xls";
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                // Copy DataGridView results to clipboard
-                copyAlltoClipboard();
+            //SaveFileDialog sfd = new SaveFileDialog();
+            //sfd.Filter = "Excel Documents (*.xls)|*.xls";
+            //sfd.FileName = "Inventory_Adjustment_Export.xls";
+            //if (sfd.ShowDialog() == DialogResult.OK)
+            //{
+            //    // Copy DataGridView results to clipboard
+            //    copyAlltoClipboard();
 
-                object misValue = System.Reflection.Missing.Value;
-                Microsoft.Office.Interop.Excel.Application xlexcel = new Microsoft.Office.Interop.Excel.Application();
+            //    object misValue = System.Reflection.Missing.Value;
+            //    Microsoft.Office.Interop.Excel.Application xlexcel = new Microsoft.Office.Interop.Excel.Application();
 
-                xlexcel.DisplayAlerts = false; // Without this you will get two confirm overwrite prompts
-                Microsoft.Office.Interop.Excel.Workbook xlWorkBook = xlexcel.Workbooks.Add(misValue);
-                Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            //    xlexcel.DisplayAlerts = false; // Without this you will get two confirm overwrite prompts
+            //    Microsoft.Office.Interop.Excel.Workbook xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            //    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                // Format column D as text before pasting results, this was required for my data
-                Microsoft.Office.Interop.Excel.Range rng = xlWorkSheet.get_Range("D:D").Cells;
-                rng.NumberFormat = "@";
+            //    // Format column D as text before pasting results, this was required for my data
+            //    Microsoft.Office.Interop.Excel.Range rng = xlWorkSheet.get_Range("D:D").Cells;
+            //    rng.NumberFormat = "@";
 
-                // Paste clipboard results to worksheet range
-                Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
-                CR.Select();
-                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+            //    // Paste clipboard results to worksheet range
+            //    Microsoft.Office.Interop.Excel.Range CR = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[1, 1];
+            //    CR.Select();
+            //    xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
 
-                // For some reason column A is always blank in the worksheet. ¯\_(ツ)_/¯
-                // Delete blank column A and select cell A1
-                Microsoft.Office.Interop.Excel.Range delRng = xlWorkSheet.get_Range("A:A").Cells;
-                delRng.Delete(Type.Missing);
-                xlWorkSheet.get_Range("A1").Select();
+            //    // For some reason column A is always blank in the worksheet. ¯\_(ツ)_/¯
+            //    // Delete blank column A and select cell A1
+            //    Microsoft.Office.Interop.Excel.Range delRng = xlWorkSheet.get_Range("A:A").Cells;
+            //    delRng.Delete(Type.Missing);
+            //    xlWorkSheet.get_Range("A1").Select();
 
-                // Save the excel file under the captured location from the SaveFileDialog
-                xlWorkBook.SaveAs(sfd.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlexcel.DisplayAlerts = true;
-                xlWorkBook.Close(true, misValue, misValue);
-                xlexcel.Quit();
+            //    // Save the excel file under the captured location from the SaveFileDialog
+            //    xlWorkBook.SaveAs(sfd.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            //    xlexcel.DisplayAlerts = true;
+            //    xlWorkBook.Close(true, misValue, misValue);
+            //    xlexcel.Quit();
 
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlexcel);
+            //    releaseObject(xlWorkSheet);
+            //    releaseObject(xlWorkBook);
+            //    releaseObject(xlexcel);
 
-                // Clear Clipboard and DataGridView selection
-                Clipboard.Clear();
-                dataGridView1.ClearSelection();
+            //    // Clear Clipboard and DataGridView selection
+            //    Clipboard.Clear();
+            //    dataGridView1.ClearSelection();
 
-                // Open the newly saved excel file
-                if (System.IO.File.Exists(sfd.FileName))
-                    System.Diagnostics.Process.Start(sfd.FileName);
+            //    // Open the newly saved excel file
+            //    if (System.IO.File.Exists(sfd.FileName))
+            //        System.Diagnostics.Process.Start(sfd.FileName);
 
-                // now to print it
-                Printing printing = new Printing();
-                printing.PrintingExcelMethod(sfd.FileName);
-            }
+            //    // now to print it
+            //    Printing printing = new Printing();
+            //    printing.PrintingExcelMethod(sfd.FileName);
+            //}
 
             //Something else
             //int height = dataGridView1.Height;
@@ -275,10 +290,7 @@ namespace StockControlManagementEB
 
 
 
-        private void printPreviewDialog1_Load(object sender, EventArgs e)
-        {
-            printDocument1.Print();
-        }
+        
 
         private void TableName_Click(object sender, EventArgs e)
         {
@@ -297,6 +309,39 @@ namespace StockControlManagementEB
 
         private void View_or_Edit_Tables_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRunQuery_Click(object sender, EventArgs e)
+        {
+            string query;
+            query = richTextBox1.Text;
+            SqlConnection con = new SqlConnection(AccessString);
+
+            con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter(query, con); //This works
+            
+            //sda.();
+            con.Close();
+
+            DataTable dt = new DataTable();
+
+            sda.Fill(dt);
+
+            dataGridView1.DataSource = dt;
+
+            MessageBox.Show("The query ran is: \n" + query + "\n The query ran succesfully");
+            
 
         }
 
