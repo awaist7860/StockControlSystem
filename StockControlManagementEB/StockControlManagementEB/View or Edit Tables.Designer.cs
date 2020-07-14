@@ -61,12 +61,13 @@
             this.btnEdit.TabIndex = 29;
             this.btnEdit.Text = "Edit Table";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // txtViewTableName
             // 
             this.txtViewTableName.Location = new System.Drawing.Point(12, 527);
             this.txtViewTableName.Name = "txtViewTableName";
-            this.txtViewTableName.Size = new System.Drawing.Size(120, 20);
+            this.txtViewTableName.Size = new System.Drawing.Size(246, 20);
             this.txtViewTableName.TabIndex = 28;
             this.txtViewTableName.TextChanged += new System.EventHandler(this.txtViewTableName_TextChanged);
             // 
@@ -214,6 +215,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(640, 153);
             this.richTextBox1.TabIndex = 43;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // btnRunQuery
             // 

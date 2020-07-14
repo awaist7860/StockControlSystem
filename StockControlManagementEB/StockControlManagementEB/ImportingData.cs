@@ -737,8 +737,8 @@ namespace StockControlManagementEB
 
             string CreateTableSQL1;
             string CreateTableSQL2;
-            string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string LogFolder = @"C:\Log\";  //Log file
+            //string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            //string LogFolder = @"C:\Log\";  //Log file
             string tableName;
             string strPath;
 
@@ -759,19 +759,19 @@ namespace StockControlManagementEB
 
 
 
-            MessageBox.Show(createTable.CreateTABLE(tableName, data));   //Calls the CreateTable method from the class and gives it the 2 parameters, first one is a string for the name and the second one is a datatable with the data
+            //MessageBox.Show(createTable.CreateTABLE(tableName, data));   //Calls the CreateTable method from the class and gives it the 2 parameters, first one is a string for the name and the second one is a datatable with the data
             MessageBox.Show(createTable.GetCreateTableSql(data, tableName));   //Calls the GetCreateTableSql method from the class and gives it a parameter, which is a datatable with the data
 
             //Giving the varaibles the sql command to be later run
-            CreateTableSQL1 = createTable.CreateTABLE(tableName, data);
+            //CreateTableSQL1 = createTable.CreateTABLE(tableName, data);
             CreateTableSQL2 = createTable.GetCreateTableSql(data, tableName);
 
             //This is the log file being created
-            using (StreamWriter sw = File.CreateText(LogFolder + "\\" + "ErrorLog_" + datetime + ".log"))
-            {
-                sw.WriteLine("This is sql query with no primary keys or datatypes: " + CreateTableSQL1);
-                sw.WriteLine("This is sql query with primary keys and datatypes: " + CreateTableSQL2);
-            }
+            //using (StreamWriter sw = File.CreateText(LogFolder + "\\" + "ErrorLog_" + datetime + ".log"))
+            //{
+                //sw.WriteLine("This is sql query with no primary keys or datatypes: " + CreateTableSQL1);
+                //sw.WriteLine("This is sql query with primary keys and datatypes: " + CreateTableSQL2);
+            //}
 
             //Sql command that is being run
             //This command creates  a table

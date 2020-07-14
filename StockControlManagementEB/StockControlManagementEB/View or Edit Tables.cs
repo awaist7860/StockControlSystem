@@ -65,7 +65,9 @@ namespace StockControlManagementEB
             listBox1.DataSource = null;
             listBox1.Items.Clear();
             dataGridView1.DataSource = null;
-            
+            btnViewAllTables_Click(sender, e);
+
+
         }
 
         private void btnViewData_Click(object sender, EventArgs e)
@@ -121,6 +123,7 @@ namespace StockControlManagementEB
                 //label1.Text = selectedName;
                 //txtTableDeleteName.Text = selectedName; //label1.;
                 txtViewTableName.Text = selectedName;
+                label2.Text = selectedName;
             }
         }
 
@@ -328,20 +331,124 @@ namespace StockControlManagementEB
             query = richTextBox1.Text;
             SqlConnection con = new SqlConnection(AccessString);
 
-            con.Open();
-            SqlDataAdapter sda = new SqlDataAdapter(query, con); //This works
+            try 
+            {
+                con.Open();
+                SqlDataAdapter sda = new SqlDataAdapter(query, con); //This works
+
+                //sda.();
+                con.Close();
+
+                DataTable dt = new DataTable();
+
+                sda.Fill(dt);
+
+                dataGridView1.DataSource = dt;
+
+                MessageBox.Show("The query ran is: \n" + query + "\n The query ran succesfully");
+            }
+            catch(Exception f)
+            {
+                MessageBox.Show("exception occured: " + f.Message + "\t" + f.GetType());
+            }
             
-            //sda.();
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            string CreateTableSQL1;
+            string CreateTableSQL2;
+            string tableName;
+            tableName = label2.Text;
+            //string dropTableQuery;
+
+            SqlConnection con = new SqlConnection(AccessString);
+
+            try
+            {
+
+                SqlCommand sda = new SqlCommand("DROP TABLE " + tableName, con); //This works
+                con.Open();
+                sda.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Table deleted: " + tableName);
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show("exception occured while creating table:" + f.Message + "\t" + f.GetType());
+                con.Close();
+            }
+
+
+
+            //string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
+            //string LogFolder = @"C:\Log\";  //Log file
+            
+            //string strPath;
+
+            CreateTable createTable = new CreateTable();    //Creates a createTable Object from the class
+            DataTable data = (DataTable)(dataGridView1.DataSource); //Gives the datatable the data from the datagridViews
+
+            //strPath = label2.Text;
+            //string filename = Path.GetFileNameWithoutExtension(strPath);
+            //tableName = filename.ToString();
+
+            //MessageBox.Show("Filename is: " + filename);
+            //This is a long work around to get a proper string, need to make it smaller
+            //label1.Text = filename;
+            //tableName = label1.Text;
+            //tableName = tableName.Replace(" ", "_");
+            //tableName = tableName + "_" + comboBox1.Text;
+            // + "TestEdit";
+            MessageBox.Show("Table is: " + tableName);
+
+
+
+            //MessageBox.Show(createTable.CreateTABLE(tableName, data));   //Calls the CreateTable method from the class and gives it the 2 parameters, first one is a string for the name and the second one is a datatable with the data
+            MessageBox.Show(createTable.GetCreateTableSql(data, tableName));   //Calls the GetCreateTableSql method from the class and gives it a parameter, which is a datatable with the data
+
+            //Giving the varaibles the sql command to be later run
+            //CreateTableSQL1 = createTable.CreateTABLE(tableName, data);
+            CreateTableSQL2 = createTable.GetCreateTableSql(data, tableName);
+
+            //This is the log file being created
+            //using (StreamWriter sw = File.CreateText(LogFolder + "\\" + "ErrorLog_" + datetime + ".log"))
+            //{
+                //sw.WriteLine("This is sql query with no primary keys or datatypes: " + CreateTableSQL1);
+                //sw.WriteLine("This is sql query with primary keys and datatypes: " + CreateTableSQL2);
+            //}
+
+            //Sql command that is being run
+            //This command creates  a table
+            //SqlConnection con = new SqlConnection(AccessString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand(CreateTableSQL2, con);
+            cmd.ExecuteNonQuery();
             con.Close();
 
-            DataTable dt = new DataTable();
 
-            sda.Fill(dt);
+            con.Open();
+            SqlBulkCopy bulkcopy = new SqlBulkCopy(con);
+            //I assume you have created the table previously
+            //Someone else here already showed how  
+            bulkcopy.DestinationTableName = tableName.ToString();
+            try
+            {
+                bulkcopy.WriteToServer(data);
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show("Error is: " + f);
+            }
+            con.Close();
 
-            dataGridView1.DataSource = dt;
+            dataGridView1.Refresh();
 
-            MessageBox.Show("The query ran is: \n" + query + "\n The query ran succesfully");
-            
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
