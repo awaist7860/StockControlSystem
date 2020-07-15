@@ -162,8 +162,7 @@ namespace StockControlManagementEB
 
         private void btnData_Click(object sender, EventArgs e)
         {
-            DataString = rtxtDataType.Text;
-            MessageBox.Show("String is: " + DataString);
+            
         }
     }
     
