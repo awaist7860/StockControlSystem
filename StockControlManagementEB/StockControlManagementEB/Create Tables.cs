@@ -16,6 +16,11 @@ namespace StockControlManagementEB
     public partial class Create_Tables : Form
     {
         public string UserTableName;
+        public string ColsString;
+        public string DataString;
+        public string[] Columns;
+        public string[] DataType;
+        public string ColumnAndDataType;
 
         string AccessString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;  //Connection String
 
@@ -35,22 +40,27 @@ namespace StockControlManagementEB
 
             //string tableName = txtInput.Text;
 
+            Columns = ColsString.Split(',');
+            DataType = DataString.Split(',');
+            MessageBox.Show(Columns.ToString());
+            MessageBox.Show(DataString.ToString());
 
-            try
-            {
-                //User can create their own table with their own table name
-                SqlCommand sda = new SqlCommand("CREATE TABLE " + UserTableName + " (ProductID INTEGER PRIMARY KEY, ProductName varchar(50), ProductSize varchar(50), ProductColour varchar(50), ProductStyle varchar(50))", con); //This works
-                con.Open();
-                //sda.ExecuteNonQuery();
-                sda.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Table Created");
-                btnViewAllTables_Click(sender, e);
-            }
-            catch (Exception a)
-            {
-                MessageBox.Show("exception occured while creating table:" + a.Message + "\t" + a.GetType());
-            }
+            //Uncomment this after to create a table
+            //try
+            //{
+            //    //User can create their own table with their own table name
+            //    SqlCommand sda = new SqlCommand("CREATE TABLE " + UserTableName + " (ProductID INTEGER PRIMARY KEY, ProductName varchar(50), ProductSize varchar(50), ProductColour varchar(50), ProductStyle varchar(50))", con); //This works
+            //    con.Open();
+            //    //sda.ExecuteNonQuery();
+            //    sda.ExecuteNonQuery();
+            //    con.Close();
+            //    MessageBox.Show("Table Created");
+            //    btnViewAllTables_Click(sender, e);
+            //}
+            //catch (Exception a)
+            //{
+            //    MessageBox.Show("exception occured while creating table:" + a.Message + "\t" + a.GetType());
+            //}
         }
 
         
@@ -139,6 +149,17 @@ namespace StockControlManagementEB
             }
         }
 
+        private void btnCol_Click(object sender, EventArgs e)
+        {
+            ColsString = rtxtColumns.Text;
+            MessageBox.Show("String is: " + ColsString);
+        }
+
+        private void btnData_Click(object sender, EventArgs e)
+        {
+            DataString = rtxtDataType.Text;
+            MessageBox.Show("String is: " + DataString);
+        }
     }
     
 }

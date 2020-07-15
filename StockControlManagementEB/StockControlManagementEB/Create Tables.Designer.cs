@@ -43,6 +43,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnConfirmName = new System.Windows.Forms.Button();
+            this.rtxtColumns = new System.Windows.Forms.RichTextBox();
+            this.rtxtDataType = new System.Windows.Forms.RichTextBox();
+            this.btnCol = new System.Windows.Forms.Button();
+            this.btnData = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +54,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(944, 7);
+            this.btnClose.Location = new System.Drawing.Point(625, 7);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(44, 23);
             this.btnClose.TabIndex = 18;
@@ -86,7 +90,7 @@
             // btnCreateTable
             // 
             this.btnCreateTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateTable.Location = new System.Drawing.Point(913, 443);
+            this.btnCreateTable.Location = new System.Drawing.Point(594, 443);
             this.btnCreateTable.Name = "btnCreateTable";
             this.btnCreateTable.Size = new System.Drawing.Size(75, 44);
             this.btnCreateTable.TabIndex = 20;
@@ -146,7 +150,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(15, 84);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(973, 91);
+            this.dataGridView1.Size = new System.Drawing.Size(654, 41);
             this.dataGridView1.TabIndex = 36;
             // 
             // dataGridView2
@@ -154,9 +158,9 @@
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(15, 201);
+            this.dataGridView2.Location = new System.Drawing.Point(15, 149);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(973, 223);
+            this.dataGridView2.Size = new System.Drawing.Size(654, 70);
             this.dataGridView2.TabIndex = 37;
             // 
             // label3
@@ -171,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 182);
+            this.label4.Location = new System.Drawing.Point(12, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 39;
@@ -187,11 +191,51 @@
             this.btnConfirmName.UseVisualStyleBackColor = true;
             this.btnConfirmName.Click += new System.EventHandler(this.btnConfirmName_Click);
             // 
+            // rtxtColumns
+            // 
+            this.rtxtColumns.Location = new System.Drawing.Point(13, 249);
+            this.rtxtColumns.Name = "rtxtColumns";
+            this.rtxtColumns.Size = new System.Drawing.Size(560, 64);
+            this.rtxtColumns.TabIndex = 41;
+            this.rtxtColumns.Text = "";
+            // 
+            // rtxtDataType
+            // 
+            this.rtxtDataType.Location = new System.Drawing.Point(12, 332);
+            this.rtxtDataType.Name = "rtxtDataType";
+            this.rtxtDataType.Size = new System.Drawing.Size(561, 80);
+            this.rtxtDataType.TabIndex = 42;
+            this.rtxtDataType.Text = "";
+            // 
+            // btnCol
+            // 
+            this.btnCol.Location = new System.Drawing.Point(579, 290);
+            this.btnCol.Name = "btnCol";
+            this.btnCol.Size = new System.Drawing.Size(90, 23);
+            this.btnCol.TabIndex = 43;
+            this.btnCol.Text = "Save Columns";
+            this.btnCol.UseVisualStyleBackColor = true;
+            this.btnCol.Click += new System.EventHandler(this.btnCol_Click);
+            // 
+            // btnData
+            // 
+            this.btnData.Location = new System.Drawing.Point(580, 388);
+            this.btnData.Name = "btnData";
+            this.btnData.Size = new System.Drawing.Size(89, 23);
+            this.btnData.TabIndex = 44;
+            this.btnData.Text = "Save Data type";
+            this.btnData.UseVisualStyleBackColor = true;
+            this.btnData.Click += new System.EventHandler(this.btnData_Click);
+            // 
             // Create_Tables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 683);
+            this.ClientSize = new System.Drawing.Size(681, 683);
+            this.Controls.Add(this.btnData);
+            this.Controls.Add(this.btnCol);
+            this.Controls.Add(this.rtxtDataType);
+            this.Controls.Add(this.rtxtColumns);
             this.Controls.Add(this.btnConfirmName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -234,5 +278,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnConfirmName;
+        private System.Windows.Forms.RichTextBox rtxtColumns;
+        private System.Windows.Forms.RichTextBox rtxtDataType;
+        private System.Windows.Forms.Button btnCol;
+        private System.Windows.Forms.Button btnData;
     }
 }
