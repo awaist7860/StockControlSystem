@@ -48,5 +48,12 @@ namespace StockControlManagementEB
             tablesMenu.Show();
             this.Close();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Search search = new Search();
+            search.Show();
+            this.Close();
+        }
     }
 }
