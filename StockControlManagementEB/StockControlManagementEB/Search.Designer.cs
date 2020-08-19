@@ -158,6 +158,7 @@
             this.Controls.Add(this.txtSearchName);
             this.Name = "Search";
             this.Text = "Search";
+            this.Load += new System.EventHandler(this.Search_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

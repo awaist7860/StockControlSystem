@@ -26,7 +26,27 @@ namespace StockControlManagementEB
 
         void fillCombo()
         {
+            SqlConnection con = new SqlConnection(AccessString);
+            SqlCommand cmdDataBase = new SqlCommand("SELECT * FROM information_schema.columns WHERE", con);
+            SqlDataReader myReader;
+            try
+            {
+                con.Open();
 
+                myReader = cmdDataBase.ExecuteReader();
+
+                while (myReader.Read())
+                {
+                    string sName = myReader.GetString("TABLE_NAME");
+
+                    comboBox1.Items.add(sName);
+                }
+                
+            }
+            catch(Exception f)
+            {
+                MessageBox.Show("Error is: " + f);
+            }
         }
 
 
@@ -107,6 +127,11 @@ namespace StockControlManagementEB
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
