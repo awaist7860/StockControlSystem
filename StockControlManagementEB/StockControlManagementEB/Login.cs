@@ -51,16 +51,18 @@ namespace StockControlManagementEB
         {
 
             SqlConnection con = new SqlConnection(AccessString);
+            //SqlConnection con = new SqlConnection("Data Source=192.168.0.202;Initial Catalog=master;Persist Security Info=True;User ID=sa;Password=Hamzah_8378");
             //startConnection();
 
             try
             {
                 //startConnection();
+                //This now talks to the new micrsoft sql server on docker and talks with the SecurityLogins Database for sqcurity reasons
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM Users WHERE Username = '" + txtUserName.Text + "' AND Password = '" + txtPassword.Text + "' AND AdminAccess = 'Yes'", con);
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM SecurityLogins.dbo.UserLogIns WHERE userName = '" + txtUserName.Text + "' AND password = '" + txtPassword.Text + "' AND adminAccess = 'Yes'", con);
                 con.Close();
                 con.Open();
-                SqlDataAdapter sda2 = new SqlDataAdapter("SELECT * FROM Users WHERE Username = '" + txtUserName.Text + "' AND Password = '" + txtPassword.Text + "' AND AdminAccess = 'No'", con);
+                SqlDataAdapter sda2 = new SqlDataAdapter("SELECT * FROM SecurityLogins.dbo.UserLogIns WHERE userName = '" + txtUserName.Text + "' AND password = '" + txtPassword.Text + "' AND adminAccess = 'No'", con);
                 con.Close();
 
                 DataTable dt = new DataTable();

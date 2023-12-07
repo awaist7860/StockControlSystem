@@ -1,0 +1,6 @@
+SELECT TOP (1000) [UserID]
+      ,[userName]
+      ,[name]
+      ,[password]
+      ,[adminAccess]
+  FROM [SecurityLogins].[dbo].[UserLogIns]

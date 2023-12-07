@@ -37,9 +37,9 @@ namespace StockControlManagementEB
 
                 while (myReader.Read())
                 {
-                    string sName = myReader.GetString("TABLE_NAME");
+                    //string sName = myReader.GetString("TABLE_NAME");
 
-                    comboBox1.Items.add(sName);
+                    //comboBox1.Items.add(sName);
                 }
                 
             }

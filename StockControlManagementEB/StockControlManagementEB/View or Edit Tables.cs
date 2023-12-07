@@ -367,7 +367,7 @@ namespace StockControlManagementEB
 
             try
             {
-
+                //This is stupid
                 SqlCommand sda = new SqlCommand("DROP TABLE " + tableName, con); //This works
                 con.Open();
                 sda.ExecuteNonQuery();
